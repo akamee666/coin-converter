@@ -8,6 +8,18 @@ public class ConversorFrameView {
     // 0 == OK and 2 == Cancel
     private Integer selectedValueConfirmacao;
     private Double valueMoeda;
+    private Object selectedMoedaValue;
+
+    Object[] moedas = { "De Real para Dólar",
+            "De Dólar para Real",
+            "De Real para Peso Argentino",
+            "De Peso Argentino para Real",
+            "De Real para Euro",
+            "De Euro para Real",
+            "De Real para Libra Estelina",
+            "De Libra Estelina para Real",
+            "De Real para Peso Chileno",
+            "De Peso Chileno para Real" };
 
     private Object escolhaConversorView() {
         Object[] opcoes = { "Conversor de Moedas", "Convesor de Temperaturas" };
@@ -71,27 +83,22 @@ public class ConversorFrameView {
 
     // }
 
-    private Object opcoesConversao() {
-        Object[] moedas = { "De Real para Dólar",
-                "De Dólar para Real",
-                "De Real para Peso Argentino",
-                "De Peso Argentino para Real",
-                "De Real para Euro",
-                "De Euro para Real",
-                "De Real para Libra Estelina",
-                "De Libra Estelina para Real",
-                "De Real para Peso Chileno",
-                "De Peso Chileno para Real" };
+    private void opcoesConversaoView() {
 
-        Object selectedValue = JOptionPane.showInputDialog(null,
+        Object selectedMoedaValue = JOptionPane.showInputDialog(
+                null,
                 "Escolha o tipo da conersao!",
                 "Escolha a moeda desejada",
                 JOptionPane.INFORMATION_MESSAGE,
                 null,
                 moedas,
                 moedas[0]);
+        
+        this.selectedMoedaValue = selectedMoedaValue;
+    }
 
-        return selectedValue;
+    private void showValueView() {
+
     }
 
     private void viewTotal() {
@@ -99,6 +106,9 @@ public class ConversorFrameView {
         escolhaConfirmacaoView();
         escolhaValorView();
         System.out.println(valueMoeda);
+        opcoesConversaoView();
+        System.out.println(selectedMoedaValue);
+        showValueView();
     }
 
     public static void main(String[] args) {
