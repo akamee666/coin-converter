@@ -87,7 +87,7 @@ public class ConversorFrameView {
 
         Object selectedMoedaValue = JOptionPane.showInputDialog(
                 null,
-                "Escolha o tipo da conersao!",
+                "Escolha o tipo da conversao!",
                 "Escolha a moeda desejada",
                 JOptionPane.INFORMATION_MESSAGE,
                 null,
@@ -98,7 +98,7 @@ public class ConversorFrameView {
     }
 
     private void showValueView() {
-
+        JOptionPane.showMessageDialog(null, "O valor Convertido é de: " + "");
     }
 
     private void viewTotal() {
