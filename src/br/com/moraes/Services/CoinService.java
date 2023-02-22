@@ -7,6 +7,11 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+
+import br.com.moraes.Models.Coin;
+import br.com.moraes.View.ConversorFrameView;
+
 /**
  * Essa classe é a responsavel por buscar o valor da moeda selecionada consumindo uma API.
  * 
@@ -29,7 +34,7 @@ public class CoinService {
     static String webService = "https://economia.awesomeapi.com.br/json/";
     static int sucesso = 200;
 
-    public static void buscaCoin(String coin) throws Exception {
+    public Coin buscaCoin(String coin) throws Exception {
         String urlParaChamada = webService + coin;
 
         try {
@@ -54,15 +59,22 @@ public class CoinService {
             String singleString = jsonCoin.toString().replaceAll("[\\[\\]]", "");
 
             System.out.println(singleString);
+
+            Coin resultCoin = new Gson().fromJson(singleString, Coin.class);
+
+            Coin valueCoin = new Coin(resultCoin.getName(),resultCoin.getBid());
+
+            System.out.println(valueCoin);
             
-            
+            return valueCoin;
         } catch(Exception e ) {
             throw new Exception(e.getMessage());
         }       
     }
 
     public static void main(String[] args) throws Exception {
-        buscaCoin("EUR-BRL");
+        CoinService coinService = new CoinService();
+        coinService.buscaCoin("USD-BRL");
     }
 
 }

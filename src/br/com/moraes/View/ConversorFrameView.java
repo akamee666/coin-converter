@@ -2,12 +2,14 @@ package br.com.moraes.View;
 
 import javax.swing.JOptionPane;
 
+import br.com.moraes.Services.CoinConvertService;
+
 public class ConversorFrameView {
 
     private Object selectedValueConversor;
     // 0 == OK and 2 == Cancel
     private Integer selectedValueConfirmacao;
-    private Double valueMoeda;
+    private Double valueSelected;
     private Object selectedMoedaValue;
 
     Object[] moedas = { "De Real para Dólar",
@@ -55,7 +57,7 @@ public class ConversorFrameView {
                 if (valueMoedaInput == 0.0) {
                     throw new NumberFormatException();
                 }
-                this.valueMoeda = valueMoedaInput;
+                this.valueSelected = valueMoedaInput;
             } catch (NumberFormatException n) {
                 JOptionPane.showMessageDialog(null, "Número Invalido!");
                 viewTotal();
@@ -95,6 +97,7 @@ public class ConversorFrameView {
                 moedas[0]);
         
         this.selectedMoedaValue = selectedMoedaValue;
+        System.out.println(selectedMoedaValue);
     }
 
     private void showValueView() {
@@ -105,14 +108,23 @@ public class ConversorFrameView {
         escolhaConversorView();
         escolhaConfirmacaoView();
         escolhaValorView();
-        System.out.println(valueMoeda);
+        System.out.println(valueSelected);
         opcoesConversaoView();
         System.out.println(selectedMoedaValue);
         showValueView();
     }
 
+    public Object getSelectedMoeda() {
+        return selectedMoedaValue;
+    }
+
+    public Double getValueToConv() {
+        return valueSelected;
+    }
+
     public static void main(String[] args) {
         ConversorFrameView caixa = new ConversorFrameView();
         caixa.viewTotal();
+        
     }
 }
