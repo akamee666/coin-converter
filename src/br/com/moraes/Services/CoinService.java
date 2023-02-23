@@ -10,7 +10,7 @@ import java.util.List;
 import com.google.gson.Gson;
 
 import br.com.moraes.Models.Coin;
-import br.com.moraes.View.ConversorFrameView;
+
 
 /**
  * Essa classe é a responsavel por buscar o valor da moeda selecionada consumindo uma API.
@@ -74,7 +74,8 @@ public class CoinService {
 
     public static void main(String[] args) throws Exception {
         CoinService coinService = new CoinService();
-        coinService.buscaCoin("USD-BRL");
+        coinService.buscaCoin("USD-BRL"); //so preciso inverter 
+
     }
 
 }

@@ -21,8 +21,4 @@ public class Coin {
     public String toString() {
         return "Nome: " + name + " Valor Atual: " + bid;
     }
-
-    public void buscaCoin() { // preciso saber quais parametros esse metodo precisa receber para fazer a
-                              // chamada
-    }
 }

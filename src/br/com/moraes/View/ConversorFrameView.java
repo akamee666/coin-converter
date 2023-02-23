@@ -2,40 +2,38 @@ package br.com.moraes.View;
 
 import javax.swing.JOptionPane;
 
-import br.com.moraes.Services.CoinConvertService;
 
 public class ConversorFrameView {
 
-    private Object selectedValueConversor;
+    private String selectedValueConversor;
     // 0 == OK and 2 == Cancel
     private Integer selectedValueConfirmacao;
     private Double valueSelected;
     private Object selectedMoedaValue;
 
-    Object[] moedas = { "De Real para Dólar",
-            "De Dólar para Real",
+    Object[] moedas = { "De Real para Dolar",
+            "De Dolar para Real",
             "De Real para Peso Argentino",
             "De Peso Argentino para Real",
             "De Real para Euro",
             "De Euro para Real",
-            "De Real para Libra Estelina",
-            "De Libra Estelina para Real",
+            "De Real para Libra Esterlina",
+            "De Libra Esterlina para Real",
             "De Real para Peso Chileno",
             "De Peso Chileno para Real" };
 
-    private Object escolhaConversorView() {
+    public String escolhaConversorView() {
         Object[] opcoes = { "Conversor de Moedas", "Convesor de Temperaturas" };
 
-        Object selectedValue = JOptionPane.showInputDialog(null, "Escolha um Conversor!", "Escolha o Conversor",
+        String selectedValue = (String) JOptionPane.showInputDialog(null, "Escolha um Conversor!", "Escolha o Conversor",
                 JOptionPane.INFORMATION_MESSAGE,
                 null,
                 opcoes,
                 opcoes[0]);
-
-        return this.selectedValueConversor = selectedValue;
+        return selectedValue;
     }
 
-    private int escolhaConfirmacaoView() {
+    public int escolhaConfirmacaoView() {
         if (selectedValueConversor == "Conversor de Moedas" || selectedValueConversor == "Convesor de Temperaturas") {
             int i = JOptionPane.showConfirmDialog(null,
                     "Voce escolheu o " + selectedValueConversor + " deseja Continuar?", "Confirmaçao",
@@ -45,7 +43,7 @@ public class ConversorFrameView {
         return selectedValueConfirmacao;
     }
 
-    private void escolhaValorView() {
+    public Double escolhaValorView() {
         if (selectedValueConfirmacao == 0) { // OK >> preciso de um input para o valor!
 
             double valueMoedaInput = 0;
@@ -67,27 +65,12 @@ public class ConversorFrameView {
         if (selectedValueConfirmacao == 2) {
             viewTotal();
         }
+        return valueSelected;
     }
 
-    // private void view() {
+    public String opcoesConversaoView() {
 
-    // } catch (NumberFormatException n) {
-    // JOptionPane.showMessageDialog(null, "Número Invalido!");
-    // view();
-    // }
-    // ;
-
-    // }
-
-    // if (i == JOptionPane.CANCEL_OPTION) {
-    // view();
-    // }
-
-    // }
-
-    private void opcoesConversaoView() {
-
-        Object selectedMoedaValue = JOptionPane.showInputDialog(
+        String selectedOpcao = (String) JOptionPane.showInputDialog(
                 null,
                 "Escolha o tipo da conversao!",
                 "Escolha a moeda desejada",
@@ -95,23 +78,17 @@ public class ConversorFrameView {
                 null,
                 moedas,
                 moedas[0]);
-        
-        this.selectedMoedaValue = selectedMoedaValue;
-        System.out.println(selectedMoedaValue);
+
+        return selectedOpcao;
     }
 
-    private void showValueView() {
-        JOptionPane.showMessageDialog(null, "O valor Convertido é de: " + "");
-    }
-
-    private void viewTotal() {
+    public void viewTotal() {
         escolhaConversorView();
         escolhaConfirmacaoView();
         escolhaValorView();
         System.out.println(valueSelected);
         opcoesConversaoView();
         System.out.println(selectedMoedaValue);
-        showValueView();
     }
 
     public Object getSelectedMoeda() {
