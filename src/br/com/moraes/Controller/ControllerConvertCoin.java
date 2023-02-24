@@ -3,6 +3,12 @@ package br.com.moraes.Controller;
 import br.com.moraes.Services.CoinConvertService;
 import br.com.moraes.View.ConversorFrameView;
 
+/**
+ * A classe ControllerConvertCoin é responsavel por fazer a conversao desejada.
+ * Tem apenas um metodo "Convert", que recebe o valor que deve ser convertido e a moeda selecionada da conversao.
+ * Dentro do metodo é usado o switch para verificar qual moeda será convertida e em cada case,ele chama o metodo correspondente a moeda da classe CoinConvertService
+ */
+
 public class ControllerConvertCoin {
     ConversorFrameView view = new ConversorFrameView();
     CoinConvertService convert = new CoinConvertService();
