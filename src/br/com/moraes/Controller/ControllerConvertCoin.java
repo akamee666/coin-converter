@@ -7,8 +7,7 @@ public class ControllerConvertCoin {
     ConversorFrameView view = new ConversorFrameView();
     CoinConvertService convert = new CoinConvertService();
 
-    public void Convert(Double valor) throws Exception {
-        String selectedCoinToConv = view.opcoesConversaoView();
+    public void Convert(Double valor,String selectedCoinToConv) throws Exception {
 
         switch (selectedCoinToConv) {
             case "De Real para Dolar":
@@ -42,10 +41,5 @@ public class ControllerConvertCoin {
                 convert.clpToBrl(valor);
                 break;
         }
-    }
-
-    public static void main(String[] args) throws Exception {
-        ControllerConvertCoin con = new ControllerConvertCoin();
-        con.Convert(10.0);
     }
 }
