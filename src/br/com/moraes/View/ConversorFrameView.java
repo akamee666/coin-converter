@@ -82,10 +82,4 @@ public class ConversorFrameView {
         }
 
     }
-
-    public static void main(String[] args) {
-        ConversorFrameView caixa = new ConversorFrameView();
-        caixa.RunApp();
-
-    }
 }
