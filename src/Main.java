@@ -1,8 +1,8 @@
-import br.com.moraes.View.ConversorFrameView;
+import br.com.moraes.View.ConversorCoinView;
 
 public class Main {
     public static void main(String[] args)  {
-       ConversorFrameView con = new ConversorFrameView();
+       ConversorCoinView con = new ConversorCoinView();
        con.RunApp();
     }
 }

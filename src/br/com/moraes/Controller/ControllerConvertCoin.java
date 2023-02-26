@@ -1,7 +1,6 @@
 package br.com.moraes.Controller;
 
 import br.com.moraes.Services.CoinConvertService;
-import br.com.moraes.View.ConversorFrameView;
 
 /**
  * A classe ControllerConvertCoin é responsavel por fazer a conversao desejada.
@@ -10,7 +9,6 @@ import br.com.moraes.View.ConversorFrameView;
  */
 
 public class ControllerConvertCoin {
-    ConversorFrameView view = new ConversorFrameView();
     CoinConvertService convert = new CoinConvertService();
 
     public void Convert(Double valor,String selectedCoinToConv) throws Exception {

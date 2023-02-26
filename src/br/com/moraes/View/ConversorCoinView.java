@@ -3,8 +3,9 @@ package br.com.moraes.View;
 import javax.swing.JOptionPane;
 
 import br.com.moraes.Controller.ControllerConvertCoin;
+import br.com.moraes.Controller.ControllerConvertTemp;
 
-public class ConversorFrameView {
+public class ConversorCoinView {
     static Object[] moedas = { "De Real para Dolar",
             "De Dolar para Real",
             "De Real para Peso Argentino",
@@ -15,6 +16,15 @@ public class ConversorFrameView {
             "De Libra Esterlina para Real",
             "De Real para Peso Chileno",
             "De Peso Chileno para Real" };
+
+    static Object[] temperaturas = {
+            "Converter de Celsius a Fahrenheit",
+            "Converter de Celsius a Kelvin",
+            "Converter de Fahrenheit a Kelvin",
+            "Converter de Fahrenheit a Celsius",
+            "Converter de Kelvin a Celsius",
+            "Converter de Kelvin a Fahrenheit"
+    };
 
     public void RunApp() {
         escolhaConversorView();
@@ -39,12 +49,16 @@ public class ConversorFrameView {
                     "Voce escolheu o " + conversorSelectedKey + " deseja Continuar?", "Confirmaçao",
                     JOptionPane.OK_CANCEL_OPTION);
 
-            //AQUI VAI VIM A VERIFICAÇAO DO CONVERSOR DE TEMPERATURAS
+            // AQUI VAI VIM A VERIFICAÇAO DO CONVERSOR DE TEMPERATURAS
 
-            if (i == 0) {
+            if (i != 0) {
+                escolhaConversorView();
+            }
+
+            if (conversorSelectedKey == "Conversor de Moedas") {
                 opcoesConversaoMoeda();
             } else {
-                escolhaConversorView();
+                opcoesConversorTemperatura();
             }
         }
     }
@@ -59,8 +73,40 @@ public class ConversorFrameView {
                 moedas,
                 moedas[0]);
 
-        if(selectedOpcao != null) {
+        if (selectedOpcao != null) {
             escolhaValorMoeda(selectedOpcao);
+        }
+    }
+
+    public void opcoesConversorTemperatura() {
+        String selectedOpcao = (String) JOptionPane.showInputDialog(
+                null,
+                "Escolha o tipo da conversao!",
+                "Escolha a a temperatura desejada",
+                JOptionPane.INFORMATION_MESSAGE,
+                null,
+                temperaturas,
+                temperaturas[0]);
+
+        if (selectedOpcao != null) {
+            escolhaValorTemperatura(selectedOpcao);
+        }
+    }
+
+    public void escolhaValorTemperatura(String tempSelectedToConv) {
+        double valueTempInput = 0;
+        String inputValue = JOptionPane.showInputDialog(null, "Digite o valor para a conversao", JOptionPane.OK_OPTION);
+
+        inputValue = inputValue.replace(',', '.');
+
+        try {
+            valueTempInput = Double.parseDouble(inputValue);
+
+            ControllerConvertTemp controller = new ControllerConvertTemp();
+            controller.Convert(valueTempInput, tempSelectedToConv);
+
+        } catch (NumberFormatException n) {
+            JOptionPane.showMessageDialog(null, "Número Invalido!");
         }
     }
 
@@ -71,17 +117,19 @@ public class ConversorFrameView {
         inputValue = inputValue.replace(',', '.');
         try {
             valueMoedaInput = Double.parseDouble(inputValue);
-            ControllerConvertCoin controller = new ControllerConvertCoin();
-            controller.Convert(valueMoedaInput, coinSelectedToConv);
 
             if (valueMoedaInput == 0.0) {
                 throw new NumberFormatException();
             }
+
+            ControllerConvertCoin controller = new ControllerConvertCoin();
+            controller.Convert(valueMoedaInput, coinSelectedToConv);
+
         } catch (NumberFormatException n) {
             JOptionPane.showMessageDialog(null, "Número Invalido!");
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 }
