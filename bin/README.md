@@ -1,4 +1,4 @@
-# Projeto Conversor De Moedas Em Java
+# Projeto Conversor De Moedas E Temperaturas Em Java
 
 <p align="center">
 <img src="http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge"/>
@@ -11,7 +11,7 @@
 
 ## Descriçao do Projeto
 
-O Projeto 'Conversor De Moedas em Java' tem como objetivo criar um conversor de moedas apenas utilizando a linguagem Java,como está no título.
+O Projeto 'Conversor De Moedas e Temperaturas em Java' tem como objetivo criar um conversor de moedas e um conversor de temperaturas apenas utilizando a linguagem Java,como está no título.
 As Conversões disponivel no projeto são:
 
 - ``Converter de Reais a Dólar``
@@ -20,6 +20,10 @@ As Conversões disponivel no projeto são:
 - ``Converter de Reais a Peso argentino``
 - ``Converter de Reais a Peso Chileno``
 - ``Obs: Também em possivel fazer as operações inversas. Ex: Dólar a Reais.``
+
+- ``Converter de Celsius á Fahrenheit``
+- ``Converter de Celsius á Kelvin``
+- ``Obs: Também em possivel fazer as operações inversas. Ex: Fahrenheit á Celsius``
 
 O diretório contém dois arquivos principais,são eles:
 
@@ -30,6 +34,7 @@ O diretório contém dois arquivos principais,são eles:
 
 - ``Java 19``
 - ``Visual Studio Code``
+- ``JOptionPane``
 
 ## Autores do projeto.
 

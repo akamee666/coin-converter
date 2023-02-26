@@ -39,6 +39,8 @@ public class ConversorFrameView {
                     "Voce escolheu o " + conversorSelectedKey + " deseja Continuar?", "Confirmaçao",
                     JOptionPane.OK_CANCEL_OPTION);
 
+            //AQUI VAI VIM A VERIFICAÇAO DO CONVERSOR DE TEMPERATURAS
+
             if (i == 0) {
                 opcoesConversaoMoeda();
             } else {
